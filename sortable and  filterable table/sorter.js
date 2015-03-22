@@ -42,7 +42,7 @@ function makeAllTablesSortable(tables) {
 }
 
 function sort(table, head) {
-	var to_sort = [];
+	var to_sort = new Array();
 	head_id = head.id;
 	row_len = 0;
 	//row_len = table.rows.length;
@@ -65,13 +65,14 @@ function sort(table, head) {
 	// sort it
 	to_sort.sort(compare(Sequence));
 	// prevent reference error
+	var is_sort = new Array();
 	for(var i = 0; i < row_len-1; i++) {
-		to_sort[i] = to_sort[i].innerHTML;
+		is_sort[i] = to_sort[i].innerHTML;
 	}
 
 	// change the rows
 	for(var i = 0; i < row_len-1; i++) {
-		table.rows[i+1].innerHTML = to_sort[i];
+		table.rows[i+1].innerHTML = is_sort[i];
 	}
 
 	// set other soeted colum to be none
